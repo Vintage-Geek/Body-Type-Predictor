@@ -1,5 +1,7 @@
 pip install pandas
 pip install sklearn
 pip install matplotlib
+pip install gdown
 pip install os
 pip install seaborn
+pip install joblib
