@@ -68,6 +68,6 @@ plt.show()
 
 model_filename = 'Your file path/svm_model.pkl'
 joblib.dump(svm_classifier, model_filename)
-print("Model saved to {model_filename})
+print("Model saved to", model_filename)
 
 #Now you can get the file stored in .pkl format where the model can be used to make UI and get desired output. Fine-tuning can be done to improve the code
