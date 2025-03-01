@@ -2,23 +2,15 @@ import pandas as pd
 from sklearn import svm
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-import gdown
 import matplotlib.pyplot as plt
 import os
 import seaborn as sns
 from sklearn.preprocessing import LabelEncoder
-def download_data(file_id, destination):
-  file_id = '14Oqmrcf2miZQjFHQd0r_n9Xva7fI-er1'
-  gdown.download(f'https://drive.google.com/uc?id={file_id}', destination, quiet = False)
-  download_data(file_id, destination)
-for _ in range(1):
-  if not os.path.exists('Determine BRI.csv'):
-    download_data('14Oqmrcf2miZQjFHQd0r_n9Xva7fI-er1', 'Determine BRI.csv')
-  else:
-    print('File already exists')
-data = pd.read_csv('Determine BRI.csv')  # Replace with your actual dataset path
+import joblib
 
-# Define features (X) and target (y)
+data = pd.read_csv('Determine BRI.csv')  # Replace with the actual dataset path or save in same file as the program
+
+# Define features and target (X and y)
 X = data.drop('Obesity Level', axis=1).values  # Replace 'obesity_level' with your actual target column name
 y = data['Obesity Level'].values
 # Split the dataset
@@ -72,3 +64,10 @@ plt.show()
 # Pair Plot (for visualizing relationships between multiple features)
 sns.pairplot(data, hue='Obesity Level')
 plt.show()
+
+
+model_filename = 'Your file path/svm_model.pkl'
+joblib.dump(svm_classifier, model_filename)
+print("Model saved to {model_filename})
+
+#Now you can get the file stored in .pkl format where the model can be used to make UI and get desired output. Fine-tuning can be done to improve the code
